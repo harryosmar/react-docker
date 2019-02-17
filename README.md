@@ -24,8 +24,10 @@
 - use docker `volumes` option to mapping :
     - `local dir` with the `container dir`
     - Folder`node_modules/` is `bookmark`-ed, to use exising `node_modules/` folder inside container, instead of replacing it with the `reference`/`mapping` to local dir volume.
-        ![With Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-with-bookmark.jpg)
+        - Folder`node_modules/` is not `bookmark`-ed
         ![Without Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-without-bookmark.jpg)
+        - Folder`node_modules/` is `bookmark`-ed *prefered*
+        ![With Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-with-bookmark.jpg)
 - url : http://localhost:3000/
 
 ### Build Docker Image
