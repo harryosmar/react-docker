@@ -23,7 +23,7 @@
 - use react `development-server`
 - use docker `volumes` option to mapping :
     - `local dir` with the `container dir`
-    - for folder `node_modules/` bookmark to use the dir inside container, instead of replacing it with the `reference`/`mapping` to local dir volume.
+    - Folder`node_modules/` is `bookmark`-ed, to use exising `node_modules/` folder inside container, instead of replacing it with the `reference`/`mapping` to local dir volume.
         ![With Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-with-bookmark.jpg)
         ![Without Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-without-bookmark.jpg)
 - url : http://localhost:3000/
