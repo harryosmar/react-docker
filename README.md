@@ -17,12 +17,15 @@
 
 ## Dev
 
-- `Dockerfile` : `Dockerfile.dev`
-- use `docker-compose.yml`
+- `Dockerfile` : [`Dockerfile.dev`](https://github.com/harryosmar/react-docker/blob/master/Dockerfile.dev)
+- use [`docker-compose.yml`](https://github.com/harryosmar/react-docker/blob/master/docker-compose.yml)
 - entrypoint command : `npm run start`
 - use react `development-server`
 - use docker `volumes` option to mapping :
     - `local dir` with the `container dir`
+    - for folder `node_modules/` bookmark to use the dir inside container, instead of replacing it with the `reference`/`mapping` to local dir volume.
+        ![With Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-with-bookmark.jpg)
+        ![Without Bookmark Volume](https://github.com/harryosmar/react-docker/raw/master/src/images/docker-vol-without-bookmark.jpg)
 - url : http://localhost:3000/
 
 ### Build Docker Image
@@ -64,7 +67,7 @@ docker exec -it [CONTAINER-ID] npm run test
 
 ## Prod
 
-- `Dockerfile` : `Dockerfile`
+- `Dockerfile` : [`Dockerfile`](https://github.com/harryosmar/react-docker/blob/master/Dockerfile)
 - do not use `docker-compose.yml`
 - entrypoint command : `npm run build`
 - use `nginx` server
