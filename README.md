@@ -1,68 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* [Dev](#dev)
+    * [Build Docker Image](#build-docker-image)
+    * [Create container](#cretate-container)
+        * [Create Container With Build Option](#create-container-with-build-option)
+    * [Run The Test](#run-the-test)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Dev
 
-### `npm start`
+- `Dockerfile` : `Dockerfile.dev`
+- use `docker-compose.yml`
+- entrypoint command : `npm run start`
+- use react `development-server`
+- use docker `volumes` option to mapping :
+    - `local dir` with the `container dir`
+- url : http://localhost:3000/
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Build Docker Image
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Manually using `docker-cli` to build the docker image.
 
-### `npm test`
+```
+docker build -f Dockerfile.dev .
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Using `docker-compose` to [Create Container With Build Option](#create-container-with-build-option)
 
-### `npm run build`
+#### Create Container
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+docker-compose up
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+##### Create container with build option
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If there is a changes to `Dockerfile.dev` or new sevices added to `docker-composer.yml` file.
 
-### `npm run eject`
+```
+docker-compose up --build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Run The Test
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+List the services :
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+docker ps -a
+```
+Then get the container id of the web-app. Then run script below. Replace `[CONTAINER-ID]` with the actual container id value.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+docker exec -it [CONTAINER-ID] npm run test
+```
 
-## Learn More
+## Prod
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `Dockerfile` : `Dockerfile`
+- do not use `docker-compose.yml`
+- entrypoint command : `npm run build`
+- use `nginx` server
+- Has 2 phases :
+    - `build` phase : install npm dependencies, then build the files for *production* usage inside
+    - `run` phase : copy build files from `/app/build` folder in `build` phase, then create the web server/`nginx`
+- url : http://localhost:8080/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Build
 
-### Code Splitting
+```
+docker build .
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Create Container
 
-### Analyzing the Bundle Size
+```
+docker run -p 8080:80 [CONTAINER-ID]
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
