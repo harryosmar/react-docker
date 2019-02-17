@@ -64,6 +64,7 @@ docker exec -it [CONTAINER-ID] npm run test
 - Has 2 phases :
     - `build` phase : install npm dependencies, then build the files for *production* usage inside
     - `run` phase : copy build files from `/app/build` folder in `build` phase, then create the web server/`nginx`
+![2 phases](https://github.com/harryosmar/react-docker/raw/master/src/images/prod-dockerfile-phase.jpg)
 - url : http://localhost:8080/
 
 ### Build
