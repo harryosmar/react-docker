@@ -73,6 +73,7 @@ docker exec -it [CONTAINER-ID] npm run test
 - do not use `docker-compose.yml`
 - entrypoint command : `npm run build`
 - use `nginx` server
+- only container [`public/`](https://github.com/harryosmar/react-docker/tree/master/public) folder 
 - Has 2 phases :
     - `build` phase : install npm dependencies, then build the files for *production* usage inside
     - `run` phase : copy build files from `/app/build` folder in `build` phase, then create the web server/`nginx`
