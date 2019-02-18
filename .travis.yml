@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t harryosmar/react-docker -f Dockerfile.dev .
+
+script:
+  - docker run harryosmar/react-docker npm run test -- --coverage
