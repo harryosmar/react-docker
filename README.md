@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/harryosmar/react-docker.svg?branch=master)](https://travis-ci.org/harryosmar/react-docker)
+
 * [Dev vs Test vs Prod](#dev-vs-test-vs-prod)
 * [Dev](#dev)
     * [Build Docker Image](#build-docker-image)
