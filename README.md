@@ -75,6 +75,11 @@ Then get the container id of the web-app. Then run script below. Replace `[CONTA
 docker exec -it [CONTAINER-ID] npm run test
 ```
 
+run the test with `coverage`, and immediate exit, after finished.
+```
+docker run harryosmar/react-docker npm run test -- --coverage
+```
+
 ## Prod
 
 - `Dockerfile` : [`Dockerfile`](https://github.com/harryosmar/react-docker/blob/master/Dockerfile)
