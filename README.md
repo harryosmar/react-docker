@@ -1,4 +1,4 @@
-* [Dev vs Prod](#dev-vs-prod)
+* [Dev vs Test vs Prod](#dev-vs-test-vs-prod)
 * [Dev](#dev)
     * [Build Docker Image](#build-docker-image)
     * [Create container](#cretate-container)
@@ -9,7 +9,13 @@
     * [Create Container](#create-container)
 * [Easy Create React App](https://github.com/harryosmar/react-docker/blob/master/react-create-app.md)
 
-## Dev vs Prod
+## Dev vs Test vs Prod
+
+TEST :
+
+```
+npm run test
+```
 
 ![CMD diff Dev vs Prod](https://github.com/harryosmar/react-docker/raw/master/src/images/cmd-diff-dev-vs-prod.jpg)
 ![Dev Server](https://github.com/harryosmar/react-docker/raw/master/src/images/dev-server.jpg)
